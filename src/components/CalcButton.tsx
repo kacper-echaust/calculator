@@ -1,3 +1,4 @@
+import { useCalculation } from "../hooks/useCalculation";
 import { Button } from "./ui/button";
 
 type Props = {
@@ -7,16 +8,17 @@ type Props = {
 };
 
 const CalcButton = ({ text, value, type }: Props) => {
+  const { appendNumber, selectOperator, calculateResult } = useCalculation();
   const setFunction = () => {
     switch (type) {
       case "number":
-        handleChangeNumber(value);
+        appendNumber(value);
         break;
       case "operator":
-        handleChangeOperator(value);
+        selectOperator(value);
         break;
       case "equal":
-        handleShowResult();
+        calculateResult();
     }
   };
 
