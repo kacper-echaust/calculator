@@ -3,25 +3,13 @@ import { Button } from "./ui/button";
 type Props = {
   text: string;
   value: string;
-  type: "number" | "operator" | "equal";
+  className?: string;
+  onClick: () => void;
 };
 
-const CalcButton = ({ text, value, type }: Props) => {
-  const setFunction = () => {
-    switch (type) {
-      case "number":
-        handleChangeNumber(value);
-        break;
-      case "operator":
-        handleChangeOperator(value);
-        break;
-      case "equal":
-        handleShowResult();
-    }
-  };
-
+const CalcButton = ({ text, value, className, onClick }: Props) => {
   return (
-    <Button onClick={() => setFunction()} value={value}>
+    <Button className={className} onClick={onClick} value={value}>
       {text}
     </Button>
   );
