@@ -6,7 +6,6 @@ const useCalculation = () => {
   const [operator, setOperator] = useState("");
 
   const appendNumber = (number: string) => {
-    if (!currentValue && number === ".") return;
     if (currentValue.includes(".") && number === ".") return;
     if (
       number === "0" &&
@@ -14,21 +13,26 @@ const useCalculation = () => {
       !currentValue.includes(".")
     )
       return;
+
     setCurrentValue(currentValue + number);
   };
 
   const selectOperator = (operatorFromButton: string) => {
-    if (operatorFromButton === "C") {
-      setCurrentValue("");
-      setOperator("");
-      setPrevValue("");
-      return;
-    }
-    if (operatorFromButton === "del") {
-      setCurrentValue(currentValue.slice(0, currentValue.length - 1));
-      return;
-    }
     if (!currentValue) return;
+
+    switch (operatorFromButton) {
+      case "del":
+        setCurrentValue(currentValue.slice(0, currentValue.length - 1));
+        return;
+      case ".":
+        if (currentValue.includes(".")) return;
+        if (!currentValue) return;
+        setCurrentValue(currentValue + operatorFromButton);
+        return;
+      case "C":
+        setCurrentValue("");
+        return;
+    }
 
     setOperator(operatorFromButton);
     setPrevValue(currentValue);
