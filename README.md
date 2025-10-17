@@ -1,69 +1,32 @@
-# React + TypeScript + Vite
+# 🧮 React Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Nowoczesny i minimalistyczny **kalkulator** stworzony w oparciu o **React**, **TailwindCSS** oraz **shadcn/ui**.  
+Projekt powstał w celu nauki pracy ze stanem w React, custom hookami i budowy estetycznego UI przy użyciu komponentów shadcn/ui.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funkcje
 
-## Expanding the ESLint configuration
+- ✖️ Podstawowe działania matematyczne: `+`, `-`, `x`, `/`, `%`
+- 🧾 Obsługa kropki dziesiętnej i zer wiodących
+- 🔙 Funkcja `DEL` — usuwanie ostatniego znaku
+- 🧹 Funkcja `C` — czyszczenie bieżącej wartości
+- ⚠️ Komunikat o błędzie przy próbie dzielenia przez 0
+- 🎨 Responsywny, czysty interfejs zbudowany w oparciu o **TailwindCSS** i **shadcn/ui**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🧠 Technologie
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+| Technologia | Zastosowanie |
+|--------------|--------------|
+| [React] | logika i interfejs użytkownika |
+| [TypeScript]| bezpieczne typowanie kodu |
+| [TailwindCSS] | stylowanie i layout |
+| [shadcn/ui] | gotowe komponenty UI |
+| [Vite] | szybkie budowanie projektu |
+| [Vercel]| hosting i CI/CD |
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
